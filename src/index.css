@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+ul, ol,dl, p ,h2 {
+  margin: 0;
+  padding: 0;
+}
+ul ,ol ,dl {
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  /* 去掉下划线 */
+}
