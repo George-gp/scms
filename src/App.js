@@ -9,6 +9,9 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 function App() {
   return (
     <div className="App">
+      <div className="title">
+        <h1>学生管理系统后台</h1>
+      </div>
       <BrowserRouter>
         <div className="nav">
           <ul>

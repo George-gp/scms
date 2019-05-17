@@ -6,6 +6,15 @@
   height: 100%;
 }
 
+.App .title {
+  height: 80px;
+  padding: 20px;
+  background-color: aquamarine;
+}
+
+.App .title h1 {
+}
+
 .App .nav {
   position: absolute;
   width: 200px;
@@ -26,7 +35,7 @@
 
 .App .content {
   margin-left: 200px;
-  background-color:rgba(0, 255, 255, 0.3);
+  background-color:rgba(0, 255, 255, 0.2);
   height: 100%;
 }
 
