@@ -1,6 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
-import {Button, Table, Divider} from 'antd'
+import {Button, Table, Divider, Modal} from 'antd'
 
 class Student extends React.Component{
     constructor() {
@@ -13,7 +13,8 @@ class Student extends React.Component{
             gender: "",
             username: "",
             password: "",
-            type: ""
+            type: "",
+            visible: false
           }
         }
       }
@@ -84,11 +85,32 @@ class Student extends React.Component{
       //删除事件
       toDel(id) {
         $.get("http://localhost:8888/User/deleteById?id=" + id, ({ status, message }) => {
-          alert(message)
           this.loadStudents()
         })
       }
     
+      //展示Model
+      showModal = () => {
+        this.setState({
+          visible: true,
+        });
+      }
+
+      //Model确定
+      handleOk(id) {
+        this.toDel(id)
+        this.setState({
+          visible: false,
+        });
+      };
+
+      //Model取消
+      handleCancel = () => {
+        this.setState({
+          visible: false,
+        });
+      };
+
       render() {
         let { students, form, flag } = this.state;
         let $form;
@@ -127,7 +149,19 @@ class Student extends React.Component{
               <span>
                 <Button onClick={this.toUpdate.bind(this,record.id)}>更新</Button>
                 <Divider type="vertical" />
-                <Button type="danger" onClick={this.toDel.bind(this,record.id)}>删除</Button>
+                <Button type="danger" onClick={this.showModal}>
+                  删除
+                  </Button>
+                  <Modal
+                    title="确认框"
+                    visible={this.state.visible}
+                    onOk={this.handleOk.bind(this,record.id)}
+                    onCancel={this.handleCancel}
+                    cancelText="取消"
+                    okText="确认"
+                  >
+                    <p>确认删除？</p>
+                  </Modal>
               </span>
             ),
           },
